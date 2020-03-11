@@ -15,6 +15,8 @@ public interface IGoodService {
 
     void updateGood(Good good);
 
+    void deleteGoodById(@Param("goodId") int goodId);
+
     List<Good> getGoodList(int row,int page);
 
     List<Good> getGoodListByCategoryId(int categoryId) ;

@@ -10,6 +10,8 @@ public interface IAddressDao {
 
     List<Address> getAddressList(@Param("userId") int userId) ;
 
+    List<Address> getAddressDefault(@Param("userId") int userId) ;
+
     void deleteAddressById(@Param("addressId") int addressId);
 
     void InsertAddress(Address address) ;

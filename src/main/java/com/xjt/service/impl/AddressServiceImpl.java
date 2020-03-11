@@ -24,6 +24,11 @@ public class AddressServiceImpl implements IAddressService {
     }
 
     @Override
+    public List<Address> getAddressDefault(int userId) {
+        return addressDao.getAddressDefault(userId);
+    }
+
+    @Override
     public void deleteAddressById(int id) {
         addressDao.deleteAddressById(id);
     }

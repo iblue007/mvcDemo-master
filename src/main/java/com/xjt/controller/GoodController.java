@@ -107,8 +107,8 @@ public class GoodController {
     }
 
     @ResponseBody
-    @RequestMapping("/selectUserById")
-    public ResultMsg selectUserById(int goodId) throws Exception {
+    @RequestMapping("/selectGoodById")
+    public ResultMsg selectGoodById(int goodId) throws Exception {
 //        ModelAndView mv = new ModelAndView();
 //        Good good = goodService.selectGoodById(id);
 //        mv.addObject("good", good);
@@ -164,6 +164,22 @@ public class GoodController {
                 goodService.addGood(good);
             }
             resultMsg.setMessage("商品添加成功");
+            resultMsg.setCode(200);
+            resultMsg.setSuccess(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            resultMsg.setMessage(e.getMessage());
+            resultMsg.setSuccess(false);
+        }
+        return resultMsg;
+    }
+    @RequestMapping(value = "/deleteGoodById")
+    @ResponseBody
+    public ResultMsg deleteGoodById(int goodId) {
+        ResultMsg resultMsg = new ResultMsg();
+        try {
+            goodService.deleteGoodById(goodId);
+            resultMsg.setMessage("商品删除成功");
             resultMsg.setCode(200);
             resultMsg.setSuccess(true);
         } catch (Exception e) {

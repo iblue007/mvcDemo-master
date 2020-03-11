@@ -20,4 +20,6 @@ public interface IGoodDao {
     void addGood(Good goods);
 
     void updateGood(Good goods);
+
+    void deleteGoodById(@Param("goodId") int goodId);
 }

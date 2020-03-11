@@ -18,6 +18,9 @@
     <select id="selectGoodById" resultType="Good" parameterType="int">
         SELECT * FROM good WHERE id = #{goodId}
     </select>
+    <select id="deleteGoodById" resultType="Good" parameterType="int">
+        delete FROM good WHERE id = #{goodId}
+    </select>
 
     <!--<select id="checkAccount" resultType="int">-->
           <!--SELECT count(*) FROM user WHERE mobile = #{mobile}-->

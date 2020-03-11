@@ -57,6 +57,30 @@ public class AddressController {
         return resultMsg;
     }
 
+    @ResponseBody
+    @RequestMapping("/getAddressDefault")
+    public ResultMsg getAddressDefault(int userId) throws Exception {
+        ResultMsg resultMsg = new ResultMsg();
+        List<Address> address = addressService.getAddressDefault(userId);
+        if (address != null && address.size() > 0) {
+            try {
+                String s = JSON.toJSONString(address);
+                resultMsg.setMessage(s);
+                resultMsg.setSuccess(true);
+                resultMsg.setCode(200);
+            } catch (Exception e) {
+                e.printStackTrace();
+                resultMsg.setMessage(e.getMessage());
+                resultMsg.setSuccess(false);
+            }
+        } else {
+            resultMsg.setMessage("没有数据");
+            resultMsg.setSuccess(true);
+            resultMsg.setCode(200);
+        }
+        return resultMsg;
+    }
+
 
     @RequestMapping(value = "/insertAddress")
     @ResponseBody

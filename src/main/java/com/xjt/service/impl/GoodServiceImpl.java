@@ -38,6 +38,11 @@ public class GoodServiceImpl implements IGoodService {
     }
 
     @Override
+    public void deleteGoodById(int goodId) {
+        goodDao.deleteGoodById(goodId);
+    }
+
+    @Override
     public List<Good> getGoodList(int row,int page) {
         return goodDao.getGoodList(row,page);
     }

@@ -22,10 +22,10 @@
 
     <select id="updateOrder" parameterType="Order">
           update `order` set
-            userId = #{userId},
             goodId = #{goodId},
             categoryId = #{categoryId},
             goodState = #{goodState},
+            getTypeInt = #{getTypeInt},
             goodName = #{goodName},
              goodDetail = #{goodDetail},
              goodDiscount = #{goodDiscount},
@@ -35,12 +35,13 @@
              buyerName = #{buyerName},
              buyerphone = #{buyerphone},
              buyerAddress = #{buyerAddress},
+             shopAddress = #{shopAddress}
         where id = #{id}
     </select>
 
     <select id="insertOrder" parameterType="Order">
-          insert into `order`(id,userId,goodId,categoryId,goodState,goodName,goodDetail,goodDiscount,goodPrice,goodPic,odate,buyerName,buyerphone,buyerAddress)
-           values(#{id},#{userId},#{goodId},#{categoryId},#{goodState},#{goodName},#{goodDetail},#{goodDiscount},#{goodPrice},#{goodPic},#{odate},#{buyerName},#{buyerphone},#{buyerAddress})
+          insert into `order`(id,userId,goodId,categoryId,goodState,getTypeInt,goodName,goodDetail,goodDiscount,goodPrice,goodPic,odate,buyerName,buyerphone,buyerAddress,shopAddress)
+           values(#{id},#{userId},#{goodId},#{categoryId},#{goodState},#{getTypeInt},#{goodName},#{goodDetail},#{goodDiscount},#{goodPrice},#{goodPic},#{odate},#{buyerName},#{buyerphone},#{buyerAddress},#{shopAddress})
     </select>
 
 </mapper>

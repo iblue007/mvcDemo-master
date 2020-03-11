@@ -41,9 +41,9 @@ public class OrderController {
         ResultMsg resultMsg = new ResultMsg();
         List<Order> orderList = null;
         if(loginUserRole == 0){
-            orderList = orderService.getOrderListByUid(userId);
-        }else {
             orderList = orderService.getOrderList();
+        }else {
+            orderList = orderService.getOrderListByUid(userId);
         }
         if (orderList != null && orderList.size() > 0) {
             try {

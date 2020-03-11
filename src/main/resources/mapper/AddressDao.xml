@@ -8,6 +8,10 @@
         SELECT * FROM address where userId = #{userId} order by addressDate desc
     </select>
 
+    <select id="getAddressDefault" resultType="Address">
+        SELECT * FROM address where userId = #{userId} and state = 1
+    </select>
+
     <select id="deleteAddressById" resultType="Address" parameterType="int">
       delete from address where id = #{addressId}
     </select>
