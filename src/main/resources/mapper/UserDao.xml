@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.xjt.dao.IUserDao">
+
+    <select id="getUserList" resultType="User">
+        SELECT * FROM user
+    </select>
+
+    <select id="selectUserById" resultType="User" parameterType="int">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <select id="checkAccount" resultType="int">
+          SELECT count(*) FROM user WHERE mobile = #{mobile}
+    </select>
+
+    <select id="addUser" parameterType="User">
+          insert into user(mobile,password,username,role,sdate,address,addressDetail) values(#{mobile},#{password},#{userName},#{role},#{sdate},#{address},#{addressDetail})
+    </select>
+
+    <select id="userLogin" parameterType="User" resultType="User">
+           SELECT * FROM user WHERE mobile = #{mobile} and password = #{password}
+    </select>
+
+    <select id="updateUser" parameterType="User">
+          update user set
+            mobile = #{mobile},
+            password = #{password},
+            username = #{username},
+            role = #{role},
+            sdate = #{sdate},
+            address = #{address},
+            addressDetail = #{addressDetail}
+        where id = #{id}
+    </select>
+    <select id="udpateAddress" parameterType="User">
+          update user set
+            address = #{address},
+            addressDetail = #{addressDetail}
+        where id = #{id}
+    </select>
+
+</mapper>

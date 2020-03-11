@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.xjt.dao.IBannerDao">
+
+    <select id="getBannerList" resultType="Banner">
+        SELECT * FROM banner
+    </select>
+
+    <select id="deleteAllBanner" resultType="Banner">
+       TRUNCATE table banner
+    </select>
+
+    <select id="insertBanenr" parameterType="Banner">
+          insert into banner(id,name,bType,categoryId,goodId,picStr,bdate) values(#{id},#{name},#{bType},#{categoryId},#{goodId},#{picStr},#{bdate})
+    </select>
+
+</mapper>

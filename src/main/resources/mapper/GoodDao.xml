@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.xjt.dao.IGoodDao">
+
+    <select id="getGoodList" resultType="Good" parameterType="int">
+       SELECT * FROM good ORDER BY gdate DESC LIMIT #{page},#{row}
+    </select>
+    <select id="getGoodListByCategoryId" resultType="Good" parameterType="int">
+       SELECT * FROM good where categoryId = #{categoryId}
+    </select>
+
+    <select id="getGoodListByKey" resultType="Good" parameterType="String">
+       SELECT * FROM good where goodName like '%${key}%'
+    </select>
+
+    <select id="selectGoodById" resultType="Good" parameterType="int">
+        SELECT * FROM good WHERE id = #{goodId}
+    </select>
+
+    <!--<select id="checkAccount" resultType="int">-->
+          <!--SELECT count(*) FROM user WHERE mobile = #{mobile}-->
+    <!--</select>-->
+
+    <select id="addGood" parameterType="Good">
+          insert into good(goodName,goodDetail,goodDiscount,goodPrice,goodPic,categoryId,categoryName,gdate) values(#{goodName},#{goodDetail},#{goodDiscount},#{goodPrice},#{goodPic},#{categoryId},#{categoryName},#{gdate})
+    </select>
+
+    <select id="updateGood" parameterType="Good">
+          update good set
+            goodName = #{goodName},
+            goodDetail = #{goodDetail},
+            goodDiscount = #{goodDiscount},
+            goodPrice = #{goodPrice},
+             goodPic = #{goodPic},
+             categoryId = #{categoryId},
+             categoryName = #{categoryName}
+        where id = #{id}
+    </select>
+    <!--gdate = #{gdate}-->
+</mapper>

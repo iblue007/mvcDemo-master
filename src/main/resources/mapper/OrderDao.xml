@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.xjt.dao.IOrderDao">
+
+    <select id="getOrderList" resultType="Order">
+        SELECT * FROM `order`
+    </select>
+
+   <select id="getOrderListByUid" resultType="Order" parameterType="int">
+        SELECT * FROM `order` where userId = #{userId}
+    </select>
+
+    <select id="getOrderById" resultType="Order" parameterType="int">
+        SELECT * FROM `order` where id = #{orderId}
+    </select>
+
+    <select id="deleteOrderById" resultType="Order" parameterType="int">
+        delete FROM `order` where id = #{orderId}
+    </select>
+
+    <select id="updateOrder" parameterType="Order">
+          update `order` set
+            userId = #{userId},
+            goodId = #{goodId},
+            categoryId = #{categoryId},
+            goodState = #{goodState},
+            goodName = #{goodName},
+             goodDetail = #{goodDetail},
+             goodDiscount = #{goodDiscount},
+             goodPrice = #{goodPrice},
+             goodPic = #{goodPic},
+             odate = #{odate},
+             buyerName = #{buyerName},
+             buyerphone = #{buyerphone},
+             buyerAddress = #{buyerAddress},
+        where id = #{id}
+    </select>
+
+    <select id="insertOrder" parameterType="Order">
+          insert into `order`(id,userId,goodId,categoryId,goodState,goodName,goodDetail,goodDiscount,goodPrice,goodPic,odate,buyerName,buyerphone,buyerAddress)
+           values(#{id},#{userId},#{goodId},#{categoryId},#{goodState},#{goodName},#{goodDetail},#{goodDiscount},#{goodPrice},#{goodPic},#{odate},#{buyerName},#{buyerphone},#{buyerAddress})
+    </select>
+
+</mapper>
