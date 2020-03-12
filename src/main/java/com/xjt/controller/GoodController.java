@@ -6,6 +6,7 @@ import com.mysql.jdbc.log.LogUtils;
 import com.xjt.model.Good;
 import com.xjt.model.ResultMsg;
 import com.xjt.service.IGoodService;
+import com.xjt.util.FileUtil;
 import com.xjt.util.TimeUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -221,6 +222,7 @@ public class GoodController {
         try {
             // Base64解码图片
             byte[] imageByteArray = Base64.getMimeDecoder().decode(encodedImageStr);
+            FileUtil.DirExist("d:\\uploads");
             String pinAddress = "D:/uploads/" + fileName+".jpg";
             FileOutputStream imageOutFile = new FileOutputStream(pinAddress);
             imageOutFile.write(imageByteArray);
